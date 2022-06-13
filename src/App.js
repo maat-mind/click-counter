@@ -2,14 +2,17 @@ import './App.css';
 import logo from './img/freecodecamp-logo.png';
 import { Counter } from './components/Counter';
 import { Button } from './components/Button';
+import { useState } from 'react';
 
 function App() {
+  const [clickCounter, setClickCounter] = useState(0);
+
   const clickHandler = () => {
-    console.log('Click');
+    setClickCounter(clickCounter + 1);
   };
 
   const restartCounter = () => {
-    console.log('Restart');
+    setClickCounter(0);
   };
 
   return (
@@ -18,7 +21,7 @@ function App() {
         <img className='logo' src={logo} alt='logo proyecto' />
       </div>
       <div className='main-container'>
-        <Counter clicks='5' />
+        <Counter clickCounter={clickCounter} />
         <Button text='Click' isClickButton={true} clickHandler={clickHandler} />
         <Button
           text='Restart'
